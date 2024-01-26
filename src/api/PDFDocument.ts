@@ -529,6 +529,13 @@ export default class PDFDocument {
     this.getInfoDict().set(key, PDFString.fromDate(modificationDate));
   }
 
+  setCustomMetadata(name: string, value: string): void {
+    assertIs(name, 'name', ['string']);
+    assertIs(value, 'value', ['string']);
+    const key = PDFName.of(name);
+    this.getInfoDict().set(key, PDFString.of(value));
+  }
+
   /**
    * Get the number of pages contained in this document. For example:
    * ```js
